@@ -101,6 +101,28 @@
         color: var(--muted);
         line-height: 1.45;
       }
+      .lang-switch {
+        display: inline-flex;
+        gap: 6px;
+        padding: 4px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        font-size: 12px;
+      }
+      .lang-switch button {
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.7);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .lang-switch button.active {
+        background: rgba(113, 97, 239, 0.55);
+        color: #fff;
+      }
       .content {
         padding: 18px 22px 22px;
         display: grid;
@@ -381,8 +403,15 @@
     <div class="wrap">
       <div class="card">
         <header>
-          <h1 id="serviceTitle">셰프 심사위원: 오늘의 선택 심사</h1>
-          <p class="sub">
+          <div class="topbar" style="margin-bottom: 10px">
+            <div></div>
+            <div class="lang-switch" role="tablist" aria-label="Language switcher">
+              <button type="button" data-lang="ko" class="active">한국어</button>
+              <button type="button" data-lang="en">English</button>
+            </div>
+          </div>
+          <h1 id="serviceTitle" data-i18n="serviceTitle">셰프 심사위원: 오늘의 선택 심사</h1>
+          <p class="sub" data-i18n="serviceSubtitle">
             요리는 안 합니다. 대신 당신의 선택을 심사합니다. (딸각만 하세요)
           </p>
         </header>
@@ -393,7 +422,9 @@
             <div class="progress" aria-label="progress">
               <div class="bar" id="bar"></div>
             </div>
-            <button class="btn" id="restartBtn" type="button">처음부터</button>
+            <button class="btn" id="restartBtn" type="button" data-i18n="restart">
+              처음부터
+            </button>
           </div>
 
           <!-- STEP 1 -->
@@ -441,8 +472,10 @@
             </div>
             <div class="warn"></div>
             <div class="row">
-              <span class="hint">딸각 1회 = 다음 단계 자동</span>
-              <button class="btn primary" type="button" data-next>다음</button>
+              <span class="hint" data-i18n="hintAutoNext">딸각 1회 = 다음 단계 자동</span>
+              <button class="btn primary" type="button" data-next data-i18n="next">
+                다음
+              </button>
             </div>
           </div>
 
@@ -491,8 +524,10 @@
             </div>
             <div class="warn"></div>
             <div class="row">
-              <button class="btn" type="button" data-prev>이전</button>
-              <button class="btn primary" type="button" data-next>다음</button>
+              <button class="btn" type="button" data-prev data-i18n="prev">이전</button>
+              <button class="btn primary" type="button" data-next data-i18n="next">
+                다음
+              </button>
             </div>
           </div>
 
@@ -541,8 +576,10 @@
             </div>
             <div class="warn"></div>
             <div class="row">
-              <button class="btn" type="button" data-prev>이전</button>
-              <button class="btn primary" type="button" data-next>다음</button>
+              <button class="btn" type="button" data-prev data-i18n="prev">이전</button>
+              <button class="btn primary" type="button" data-next data-i18n="next">
+                다음
+              </button>
             </div>
           </div>
 
@@ -591,8 +628,10 @@
             </div>
             <div class="warn"></div>
             <div class="row">
-              <button class="btn" type="button" data-prev>이전</button>
-              <button class="btn primary" type="button" data-next>다음</button>
+              <button class="btn" type="button" data-prev data-i18n="prev">이전</button>
+              <button class="btn primary" type="button" data-next data-i18n="next">
+                다음
+              </button>
             </div>
           </div>
 
@@ -641,8 +680,10 @@
             </div>
             <div class="warn"></div>
             <div class="row">
-              <button class="btn" type="button" data-prev>이전</button>
-              <button class="btn primary" type="button" data-next>다음</button>
+              <button class="btn" type="button" data-prev data-i18n="prev">이전</button>
+              <button class="btn primary" type="button" data-next data-i18n="next">
+                다음
+              </button>
             </div>
           </div>
 
@@ -691,8 +732,8 @@
             </div>
             <div class="warn"></div>
             <div class="row">
-              <button class="btn" type="button" data-prev>이전</button>
-              <button class="btn primary" type="button" id="finishBtn">
+              <button class="btn" type="button" data-prev data-i18n="prev">이전</button>
+              <button class="btn primary" type="button" id="finishBtn" data-i18n="finish">
                 결과 보기
               </button>
             </div>
@@ -706,19 +747,19 @@
 
             <div class="grid2">
               <div class="mini">
-                <h3>셰프 한 줄 평</h3>
+                <h3 data-i18n="resultChefLine">셰프 한 줄 평</h3>
                 <p id="verdictLine">—</p>
               </div>
               <div class="mini">
-                <h3>당신의 선택 요약</h3>
+                <h3 data-i18n="resultSummaryTitle">당신의 선택 요약</h3>
                 <p id="summaryLine">—</p>
               </div>
               <div class="mini">
-                <h3>오늘의 조리 팁(인생용)</h3>
+                <h3 data-i18n="resultTipTitle">오늘의 조리 팁(인생용)</h3>
                 <p id="tipLine">—</p>
               </div>
               <div class="mini">
-                <h3>다음 코스(가볍게)</h3>
+                <h3 data-i18n="resultNextTitle">다음 코스(가볍게)</h3>
                 <p id="nextLine">—</p>
               </div>
             </div>
@@ -726,18 +767,18 @@
             <div class="copybox" id="copyText" aria-label="share text">—</div>
 
             <div class="row">
-              <button class="btn" id="copyBtn" type="button">
+              <button class="btn" id="copyBtn" type="button" data-i18n="copyResult">
                 결과 문구 복사
               </button>
-              <button class="btn primary" id="againBtn" type="button">
+              <button class="btn primary" id="againBtn" type="button" data-i18n="retry">
                 다시 심사받기
               </button>
             </div>
 
             <!-- ✅ 자연스럽게 BMI/식단 테스트로 연결 (링크는 필요에 맞게 바꿔주세요) -->
             <div class="mini">
-              <h3>보너스: “내 상태 한 번만 체크”</h3>
-              <p class="hint">
+              <h3 data-i18n="bonusTitle">보너스: “내 상태 한 번만 체크”</h3>
+              <p class="hint" data-i18n-html="bonusDesc">
                 숫자 강요는 안 합니다. 관심 있으면 한 번만 가볍게.
                 <br />
                 <a
@@ -757,7 +798,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                더 많은 테스트 해보기
+                <span data-i18n="ctaMore">더 많은 테스트 해보기</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -774,7 +815,7 @@
               </a>
             </div>
 
-            <p class="hint">
+            <p class="hint" data-i18n="disclaimer">
               ※ 본 서비스는 실제 인물/프로그램과 무관한 팬 스타일 콘텐츠입니다.
             </p>
           </div>
@@ -783,14 +824,471 @@
     </div>
 
     <script>
+      const translations = {
+        ko: {
+          metaTitle: "셰프 심사위원 | 오늘의 선택 심사",
+          metaDescription:
+            "요리는 안 합니다. 대신 당신의 선택을 심사합니다. 딸각 테스트 -> 결과는 캡처 각.",
+          metaOgTitle: "Chef Judge Test",
+          metaOgDescription:
+            "Tap-to-answer life choices. Get a chef-style verdict and share it.",
+          metaTwitterTitle: "Chef Judge Test",
+          metaTwitterDescription:
+            "Tap-to-answer life choices. Get a chef-style verdict and share it.",
+          serviceTitle: "셰프 심사위원: 오늘의 선택 심사",
+          serviceSubtitle:
+            "요리는 안 합니다. 대신 당신의 선택을 심사합니다. (딸각만 하세요)",
+          restart: "처음부터",
+          prev: "이전",
+          next: "다음",
+          finish: "결과 보기",
+          hintAutoNext: "딸각 1회 = 다음 단계 자동",
+          resultChefLine: "셰프 한 줄 평",
+          resultSummaryTitle: "당신의 선택 요약",
+          resultTipTitle: "오늘의 조리 팁(인생용)",
+          resultNextTitle: "다음 코스(가볍게)",
+          copyResult: "결과 문구 복사",
+          retry: "다시 심사받기",
+          bonusTitle: "보너스: “내 상태 한 번만 체크”",
+          bonusDesc:
+            '숫자 강요는 안 합니다. 관심 있으면 한 번만 가볍게.<br /><a class="link" href="https://funnyfunny.cloud" target="_blank" rel="noopener noreferrer">BMI/식단 테스트 쪽으로 이동</a>',
+          ctaMore: "더 많은 테스트 해보기",
+          disclaimer:
+            "※ 본 서비스는 실제 인물/프로그램과 무관한 팬 스타일 콘텐츠입니다.",
+          warnSelect: "하나만 딸각 해주세요. (심사위원이 기다립니다)",
+          stepLabel: "STEP {current} / {total}",
+          resultLabel: "RESULT / {total}",
+          badgeLoading: "🧾 심사표 생성 중...",
+          copySuccess: "복사 완료! (이제 캡처 없이도 공유 가능)",
+          copyFail: "복사 실패. 브라우저 권한을 확인해 주세요.",
+          shareTemplate:
+            "[Chef Judge Test]\n{emoji} {name}\n{headline}\n{line}\n- 한줄요약: {summary}\n- 조리팁: {tip}\nchef.funnyfunny.cloud",
+          steps: [
+            null,
+            {
+              title: "밥 먹기 전, 당신의 “첫 행동”은?",
+              desc: "선택하면 바로 다음으로 넘어갑니다.",
+              choices: [
+                {
+                  title: "일단 먹고 생각한다",
+                  hint: "뇌: “나중에 회의하자”",
+                },
+                {
+                  title: "잠깐 참아본다",
+                  hint: "뇌: “통제력 테스트 중”",
+                },
+                {
+                  title: "배고픈 척 안 한다",
+                  hint: "뇌: “문제는 존재하지 않는다”",
+                },
+                {
+                  title: "메뉴부터 조사한다",
+                  hint: "뇌: “데이터가 부족하다”",
+                },
+              ],
+            },
+            {
+              title: "메뉴 고를 때 최우선 기준은?",
+              desc: "당신의 “선택 기준”이 결과 톤을 정합니다.",
+              choices: [
+                { title: "맛", hint: "인생은 짧고, 맛은 길다" },
+                { title: "가격", hint: "가성비는 배신하지 않는다(대체로)" },
+                { title: "지금 기분", hint: "기분이 메뉴를 고른다" },
+                { title: "구성/균형", hint: "마음보다 접시가 침착하다" },
+              ],
+            },
+            {
+              title: "야식 문자가 오면?",
+              desc: "여기서 흑/백/회색이 갈립니다.",
+              choices: [
+                { title: "간다", hint: "“이건 사회생활이다”" },
+                { title: "안 간다", hint: "“내일 나를 사랑한다”" },
+                { title: "고민하다가 적당히", hint: "반만 먹는다고 말해놓고…" },
+                { title: "조건 협상 후 간다", hint: "“소스는 빼고, 음료는 물”" },
+              ],
+            },
+            {
+              title: "식사 후 당신의 “기본 루틴”은?",
+              desc: "‘생활 온도’가 결과에 반영됩니다.",
+              choices: [
+                { title: "바로 앉는다", hint: "“소화는 의자가 한다”" },
+                { title: "조금 걷는다", hint: "“10분만… 딱 10분만”" },
+                { title: "바로 일/공부", hint: "“식곤증과의 혈투”" },
+                { title: "정리/설거지", hint: "“주방은 거짓말을 못 한다”" },
+              ],
+            },
+            {
+              title: "“결정 장애”가 올 때 당신은?",
+              desc: "결과 문구의 ‘칼맛’이 달라집니다.",
+              choices: [
+                { title: "3초컷", hint: "“선택은 예술”" },
+                { title: "주변에게 물어본다", hint: "“책임 분산은 미덕”" },
+                { title: "끝까지 스크롤", hint: "“더 좋은 선택이 있을 것 같다”" },
+                { title: "늘 먹던 거", hint: "“검증된 루틴은 배신 안 함”" },
+              ],
+            },
+            {
+              title: "오늘의 “한 줄 자기평가”를 고르세요",
+              desc: "결과 카드에 같이 들어갑니다.",
+              choices: [
+                { title: "“솔직히… 나 꽤 괜찮음”", hint: "자신감은 양념이다" },
+                { title: "“오늘은 그냥 살아남음”", hint: "버틴 것도 실력" },
+                {
+                  title: "“정신없었지만 재밌었음”",
+                  hint: "인생은 불맛",
+                },
+                { title: "“내일은 새 사람”", hint: "내일의 나: “누구세요?”" },
+              ],
+            },
+          ],
+          results: {
+            meta: {
+              black: { emoji: "🖤", name: "흑 요리사형", en: "Black Chef" },
+              white: { emoji: "🤍", name: "백 요리사형", en: "White Chef" },
+              gray: { emoji: "⚪", name: "회색 요리사형", en: "Gray Chef" },
+            },
+            headlines: {
+              black: "불맛이 먼저 들어가요.",
+              white: "기본기가 맛을 만듭니다.",
+              gray: "현실적인 타협, 그것도 기술입니다.",
+            },
+            sublines: {
+              black: "재미는 확실. 다만 가끔은 ‘조절’이 양념입니다.",
+              white: "무난하게 강한 타입. 지치지 않게 ‘재미’도 조금 넣어주세요.",
+              gray: "안 망하는 선택을 잘합니다. 큰 성과는 ‘한 가지’만 고치면 나옵니다.",
+            },
+            lines: {
+              black: [
+                "결정은 빠른데, 브레이크가 없습니다.",
+                "지금이 중요합니다. 내일은 항상 내일의 문제.",
+                "알면서도 합니다. 그래서 더 세요.",
+                "계획은 있는데, 항상 수정됩니다.",
+                "선택의 기준이 ‘지금 기분’입니다.",
+                "후회는 빠르고, 반복은 더 빠릅니다.",
+                "통제보다 자유를 택했습니다.",
+              ],
+              white: [
+                "크게 실패는 없고, 크게 튀지도 않습니다.",
+                "정답에 가까운 선택을 자주 합니다.",
+                "재미는 줄였고, 안정성은 올렸습니다.",
+                "계획은 잘 지키는 편입니다.",
+                "실수는 드물고, 변화도 적습니다.",
+                "관리라는 단어가 잘 어울립니다.",
+                "조용히 꾸준한 타입.",
+              ],
+              gray: [
+                "이상과 현실 사이에서 잘 타협합니다.",
+                "완벽하진 않지만, 망하지도 않습니다.",
+                "알아서 적당히 합니다.",
+                "필요할 땐 참지만, 너무 참진 않습니다.",
+                "상황 판단이 빠른 편입니다.",
+                "무리 없는 선택을 선호합니다.",
+              ],
+            },
+            summary: {
+              black: "즉시 만족에 강함 + 선택이 빠름 + 가끔은 과감함이 과함이 됨",
+              white: "안정 지향 + 루틴 강함 + 큰 실수는 적지만 재미도 절약함",
+              gray: "타협의 달인 + 현실 감각 좋음 + 한 끗 차이로 더 좋아질 타입",
+            },
+            tips: {
+              black: [
+                "‘한 번만 더’가 나오면, 물 한 컵 먼저. (불 끄기 전에 환기)",
+                "결정이 빨라서 멋진데, 체크포인트 하나만 추가해요: ‘지금도 필요해?’",
+              ],
+              white: [
+                "완벽 루틴에 ‘작은 재미’를 넣어야 오래 갑니다. (소스 한 방울)",
+                "좋은 선택을 계속하려면, 쉬운 보상도 같이 주는 게 이깁니다.",
+              ],
+              gray: [
+                "타협은 능력. 다만 ‘핵심 한 가지’만은 고정하면 급상승합니다.",
+                "적당함을 유지하되, 주 1회만 ‘의식적인 선택’을 해보세요.",
+              ],
+            },
+            next: {
+              black: "이 타입은 ‘숫자 확인’이 은근히 도움 됩니다. (딱 한 번만)",
+              white: "유지형이라 ‘현 상태 점검’이 잘 맞아요. (가볍게)",
+              gray: "방향만 잡으면 됩니다. ‘나한테 맞는 식사 스타일’ 쪽이 잘 맞을 듯",
+            },
+          },
+        },
+        en: {
+          metaTitle: "Chef Judge | Daily Choice Review",
+          metaDescription:
+            "You don't cook here. You get judged. Tap through and capture your chef verdict.",
+          metaOgTitle: "Chef Judge Test",
+          metaOgDescription:
+            "Tap-to-answer life choices. Get a chef-style verdict and share it.",
+          metaTwitterTitle: "Chef Judge Test",
+          metaTwitterDescription:
+            "Tap-to-answer life choices. Get a chef-style verdict and share it.",
+          serviceTitle: "Chef Judge: Daily Choice Review",
+          serviceSubtitle:
+            "We don't cook. We judge your choices. (Just tap.)",
+          restart: "Restart",
+          prev: "Back",
+          next: "Next",
+          finish: "See Results",
+          hintAutoNext: "One tap = auto next step",
+          resultChefLine: "Chef Verdict",
+          resultSummaryTitle: "Your Choice Summary",
+          resultTipTitle: "Cooking Tip (for life)",
+          resultNextTitle: "Next Course (light)",
+          copyResult: "Copy Result Text",
+          retry: "Judge Me Again",
+          bonusTitle: 'Bonus: "Check my status once"',
+          bonusDesc:
+            'No number pressure. If you want, just a quick glance.<br /><a class="link" href="https://funnyfunny.cloud" target="_blank" rel="noopener noreferrer">Go to the BMI/Diet test</a>',
+          ctaMore: "Try more tests",
+          disclaimer:
+            "Note: This is fan-style content, unrelated to real people or shows.",
+          warnSelect: "Pick just one. The judge is waiting.",
+          stepLabel: "STEP {current} / {total}",
+          resultLabel: "RESULT / {total}",
+          badgeLoading: "🧾 Generating scorecard...",
+          copySuccess: "Copied! (Now you can share without a screenshot.)",
+          copyFail: "Copy failed. Please check browser permissions.",
+          shareTemplate:
+            "[Chef Judge Test]\n{emoji} {name}\n{headline}\n{line}\n- Summary: {summary}\n- Tip: {tip}\nchef.funnyfunny.cloud",
+          steps: [
+            null,
+            {
+              title: "Before eating, what's your first move?",
+              desc: "Pick one to jump to the next step.",
+              choices: [
+                { title: "Eat first, think later", hint: "Brain: 'Debate later'" },
+                { title: "Hold back for a moment", hint: "Brain: 'Testing control'" },
+                { title: "Pretend I'm not hungry", hint: "Brain: 'Problem solved'" },
+                { title: "Research the menu first", hint: "Brain: 'Need more data'" },
+              ],
+            },
+            {
+              title: "Top priority when choosing a menu?",
+              desc: "Your criteria sets the tone of the result.",
+              choices: [
+                { title: "Taste", hint: "Life is short, flavor is long" },
+                { title: "Price", hint: "Value rarely betrays you (mostly)" },
+                { title: "Current mood", hint: "Mood chooses the menu" },
+                { title: "Balance", hint: "The plate stays calmer than the heart" },
+              ],
+            },
+            {
+              title: "Late-night food invite?",
+              desc: "This is where black/white/gray splits.",
+              choices: [
+                { title: "Go", hint: "'This is social life'" },
+                { title: "Skip", hint: "'I'm loving tomorrow-me'" },
+                { title: "Hesitate then go lightly", hint: "You say 'half only'..." },
+                { title: "Negotiate then go", hint: "'No sauce, water only'" },
+              ],
+            },
+            {
+              title: "Your default routine after eating?",
+              desc: "Your lifestyle temperature shows up in the result.",
+              choices: [
+                { title: "Sit down immediately", hint: "'The chair digests it'" },
+                { title: "Walk a bit", hint: "'Just 10 minutes...'" },
+                { title: "Work/study right away", hint: "'Battle with food coma'" },
+                { title: "Clean up", hint: "'The kitchen doesn't lie'" },
+              ],
+            },
+            {
+              title: "When decision paralysis hits, you...",
+              desc: "This changes the sharpness of your verdict.",
+              choices: [
+                { title: "3-second pick", hint: "'Choice is art'" },
+                { title: "Ask people around", hint: "'Distributed responsibility'" },
+                { title: "Scroll to the end", hint: "'There might be a better one'" },
+                { title: "The usual", hint: "'Proven routines don't betray'" },
+              ],
+            },
+            {
+              title: "Pick your one-line self review today",
+              desc: "This goes on the result card.",
+              choices: [
+                { title: "'Honestly... I'm pretty good'", hint: "Confidence is seasoning" },
+                { title: "'I just survived today'", hint: "Endurance is a skill" },
+                { title: "'Chaotic but fun'", hint: "Life needs some char" },
+                { title: "'New me tomorrow'", hint: "Tomorrow me: 'Who are you?'" },
+              ],
+            },
+          ],
+          results: {
+            meta: {
+              black: { emoji: "🖤", name: "Black Chef", en: "Black Chef" },
+              white: { emoji: "🤍", name: "White Chef", en: "White Chef" },
+              gray: { emoji: "⚪", name: "Gray Chef", en: "Gray Chef" },
+            },
+            headlines: {
+              black: "Smoky flavor hits first.",
+              white: "Basics make the taste.",
+              gray: "Practical compromises are a skill.",
+            },
+            sublines: {
+              black: "Fun is guaranteed. Just add a little control as seasoning.",
+              white: "Strong and steady. Add a touch of fun to avoid burnout.",
+              gray: "You rarely fail. One small change can unlock big results.",
+            },
+            lines: {
+              black: [
+                "Decisions are fast, brakes are missing.",
+                "Today matters most. Tomorrow is tomorrow's problem.",
+                "You know it, you still do it. That's the power.",
+                "Plans exist, but they keep evolving.",
+                "Your criteria is often 'current mood.'",
+                "Regret is fast. Repeats are faster.",
+                "You chose freedom over control.",
+              ],
+              white: [
+                "Few big failures, few big spikes.",
+                "You often pick the closest answer.",
+                "Less fun, more stability.",
+                "You keep your plans pretty well.",
+                "Mistakes are rare, changes are few.",
+                "The word 'management' fits you.",
+                "Quietly consistent type.",
+              ],
+              gray: [
+                "You negotiate between ideals and reality.",
+                "Not perfect, but not a mess either.",
+                "You handle things in moderation.",
+                "You can hold back, but not too much.",
+                "Quick situational judgment.",
+                "You prefer low-risk choices.",
+              ],
+            },
+            summary: {
+              black: "Strong instant gratification + fast choices + boldness sometimes too bold",
+              white: "Stability-focused + strong routines + safe but saves on fun",
+              gray: "Master of compromise + realistic + can level up with one tweak",
+            },
+            tips: {
+              black: [
+                "When 'just one more' shows up, drink a glass of water first.",
+                "Fast decisions look cool. Add one checkpoint: 'Do I need it now?'",
+              ],
+              white: [
+                "Add a small dose of fun to make routines last.",
+                "Reward good choices with easy wins to keep momentum.",
+              ],
+              gray: [
+                "Compromise is a skill. Fix just one core thing to jump ahead.",
+                "Stay balanced, but make one intentional choice each week.",
+              ],
+            },
+            next: {
+              black: "A quick number check helps this type. (Just once.)",
+              white: "You thrive on check-ins. A light status review fits.",
+              gray: "You only need direction. A simple meal-style check helps.",
+            },
+          },
+        },
+      };
+
+      let currentLang = "ko";
+
+      function t(key, vars = {}) {
+        const langTable = translations[currentLang] || translations.ko;
+        const template = langTable[key] ?? translations.ko[key] ?? key;
+        return template.replace(/\{(\w+)\}/g, (_, token) =>
+          vars[token] !== undefined ? vars[token] : `{${token}}`
+        );
+      }
+
+      function applyTranslations() {
+        document.title = t("metaTitle");
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute("content", t("metaDescription"));
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute("content", t("metaOgTitle"));
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute("content", t("metaOgDescription"));
+        const twTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twTitle) twTitle.setAttribute("content", t("metaTwitterTitle"));
+        const twDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twDesc) twDesc.setAttribute("content", t("metaTwitterDescription"));
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          el.textContent = t(el.dataset.i18n);
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+          el.innerHTML = t(el.dataset.i18nHtml);
+        });
+
+        applyQuizTranslations();
+        updateStepLabel();
+
+        const badgeEl = document.getElementById("badge");
+        if (badgeEl && !resultEl.classList.contains("show")) {
+          badgeEl.textContent = t("badgeLoading");
+        }
+
+        if (resultEl.classList.contains("show")) {
+          renderResult();
+        }
+      }
+
+      function applyQuizTranslations() {
+        const stepsData = (translations[currentLang] || translations.ko).steps;
+        steps.forEach((stepEl) => {
+          const stepNum = Number(stepEl.dataset.step);
+          const data = stepsData[stepNum];
+          if (!data) return;
+          const h2 = stepEl.querySelector("h2");
+          const p = stepEl.querySelector(".q p");
+          if (h2) h2.textContent = data.title;
+          if (p) p.textContent = data.desc;
+          const choiceButtons = stepEl.querySelectorAll(".choice");
+          choiceButtons.forEach((btn, idx) => {
+            const c = data.choices[idx];
+            if (!c) return;
+            btn.firstChild.textContent = c.title + " ";
+            const small = btn.querySelector("small");
+            if (small) small.textContent = c.hint;
+          });
+        });
+      }
+
+      function setLang(lang, options = {}) {
+        const nextLang = translations[lang] ? lang : "ko";
+        currentLang = nextLang;
+        document.documentElement.lang = nextLang;
+        localStorage.setItem("preferredLang", nextLang);
+        document.querySelectorAll(".lang-switch button").forEach((button) => {
+          button.classList.toggle("active", button.dataset.lang === nextLang);
+        });
+        applyTranslations();
+
+        if (options.updateUrl) {
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", nextLang);
+          window.history.replaceState({}, "", url);
+        }
+      }
+
+      function detectLang() {
+        const params = new URLSearchParams(window.location.search);
+        const paramLang = params.get("lang");
+        if (translations[paramLang]) return paramLang;
+        const stored = localStorage.getItem("preferredLang");
+        if (translations[stored]) return stored;
+        const browser = navigator.language?.toLowerCase() || "";
+        return browser.startsWith("en") ? "en" : "ko";
+      }
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLang(button.dataset.lang, { updateUrl: true });
+        });
+      });
+
       /***********************
        * 서비스 공통 설정
        ***********************/
-      const SERVICE_NAME_KO = "셰프 심사위원: 오늘의 선택 심사";
+      const SERVICE_NAME_KO = t("serviceTitle");
       const SERVICE_OG_TEXT_EN = "Chef Judge Test"; // ✅ OG 이미지 text(영문)
       const FAVICON_TEXT = "CHEF"; // ✅ 파비콘 글자
 
-      document.getElementById("serviceTitle").textContent = SERVICE_NAME_KO;
+      document.getElementById("serviceTitle").textContent = t("serviceTitle");
 
       // OG 이미지 text 강제 세팅(영문)
       const og = document.querySelector('meta[property="og:image"]');
@@ -852,9 +1350,22 @@
       const againBtn = document.getElementById("againBtn");
       const copyBtn = document.getElementById("copyBtn");
 
+      setLang(detectLang(), { updateUrl: false });
+
       let current = 1;
       const LAST_STEP = 6;
       const TOTAL = 7; // 결과 포함
+
+      function updateStepLabel() {
+        if (resultEl.classList.contains("show")) {
+          stepLabel.textContent = t("resultLabel", { total: TOTAL });
+          return;
+        }
+        stepLabel.textContent = t("stepLabel", {
+          current,
+          total: TOTAL,
+        });
+      }
 
       function showStep(n) {
         current = n;
@@ -863,16 +1374,16 @@
         );
         resultEl.classList.remove("show");
 
-        stepLabel.textContent = `STEP ${n} / ${TOTAL}`;
+        updateStepLabel();
         const progress = Math.round(((n - 1) / (TOTAL - 1)) * 100);
         bar.style.width = progress + "%";
       }
 
       function showResult() {
-        stepLabel.textContent = `RESULT / ${TOTAL}`;
         bar.style.width = "100%";
         steps.forEach((s) => s.classList.remove("active"));
         resultEl.classList.add("show");
+        updateStepLabel();
         renderResult();
       }
 
@@ -902,7 +1413,7 @@
         }[n];
 
         if (needKey && !state[needKey]) {
-          warn(stepEl, "하나만 딸각 해주세요. (심사위원이 기다립니다)");
+          warn(stepEl, t("warnSelect"));
           return false;
         }
         return true;
@@ -956,36 +1467,6 @@
       /***********************
        * 결과 생성
        ***********************/
-
-      // 20개 결과 문구 (중독성: 매번 랜덤 1개)
-      const RESULT_LINES = {
-        black: [
-          "결정은 빠른데, 브레이크가 없습니다.",
-          "지금이 중요합니다. 내일은 항상 내일의 문제.",
-          "알면서도 합니다. 그래서 더 세요.",
-          "계획은 있는데, 항상 수정됩니다.",
-          "선택의 기준이 ‘지금 기분’입니다.",
-          "후회는 빠르고, 반복은 더 빠릅니다.",
-          "통제보다 자유를 택했습니다.",
-        ],
-        white: [
-          "크게 실패는 없고, 크게 튀지도 않습니다.",
-          "정답에 가까운 선택을 자주 합니다.",
-          "재미는 줄였고, 안정성은 올렸습니다.",
-          "계획은 잘 지키는 편입니다.",
-          "실수는 드물고, 변화도 적습니다.",
-          "관리라는 단어가 잘 어울립니다.",
-          "조용히 꾸준한 타입.",
-        ],
-        gray: [
-          "이상과 현실 사이에서 잘 타협합니다.",
-          "완벽하진 않지만, 망하지도 않습니다.",
-          "알아서 적당히 합니다.",
-          "필요할 땐 참지만, 너무 참진 않습니다.",
-          "상황 판단이 빠른 편입니다.",
-          "무리 없는 선택을 선호합니다.",
-        ],
-      };
 
       function pick(arr) {
         return arr[Math.floor(Math.random() * arr.length)];
@@ -1042,35 +1523,20 @@
 
       function renderResult() {
         const type = scoreProfile();
+        const resultData =
+          (translations[currentLang] || translations.ko).results;
+        const meta = resultData.meta[type];
+        const line = pick(resultData.lines[type]);
+        const headline = resultData.headlines[type];
+        const sub = resultData.sublines[type];
+        const summary = resultData.summary[type];
+        const tip = pick(resultData.tips[type]);
+        const next = resultData.next[type];
 
-        const meta = {
-          black: { emoji: "🖤", name: "흑 요리사형", en: "Black Chef" },
-          white: { emoji: "🤍", name: "백 요리사형", en: "White Chef" },
-          gray: { emoji: "⚪", name: "회색 요리사형", en: "Gray Chef" },
-        }[type];
-
-        const line = pick(RESULT_LINES[type]);
-        const headline =
-          type === "black"
-            ? "불맛이 먼저 들어가요."
-            : type === "white"
-            ? "기본기가 맛을 만듭니다."
-            : "현실적인 타협, 그것도 기술입니다.";
-
-        const sub =
-          type === "black"
-            ? "재미는 확실. 다만 가끔은 ‘조절’이 양념입니다."
-            : type === "white"
-            ? "무난하게 강한 타입. 지치지 않게 ‘재미’도 조금 넣어주세요."
-            : "안 망하는 선택을 잘합니다. 큰 성과는 ‘한 가지’만 고치면 나옵니다.";
-
-        const summary = makeSummary(type);
-        const tip = makeTip(type);
-        const next = makeNextCourse(type);
-
-        document.getElementById(
-          "badge"
-        ).textContent = `${meta.emoji} ${meta.name} (${meta.en})`;
+        document.getElementById("badge").textContent =
+          currentLang === "ko"
+            ? `${meta.emoji} ${meta.name} (${meta.en})`
+            : `${meta.emoji} ${meta.name}`;
         document.getElementById("headline").textContent = headline;
         document.getElementById("subline").textContent = sub;
         document.getElementById("verdictLine").textContent = `“${line}”`;
@@ -1079,52 +1545,15 @@
         document.getElementById("nextLine").textContent = next;
 
         // 공유용 텍스트
-        const share = `[Chef Judge Test]
-${meta.emoji} ${meta.name}
-${headline}
-${line}
-- 한줄요약: ${summary}
-- 조리팁: ${tip}
-chef.funnyfunny.cloud`;
+        const share = t("shareTemplate", {
+          emoji: meta.emoji,
+          name: meta.name,
+          headline,
+          line,
+          summary,
+          tip,
+        });
         document.getElementById("copyText").textContent = share;
-      }
-
-      function makeSummary(type) {
-        const map = {
-          black: "즉시 만족에 강함 + 선택이 빠름 + 가끔은 과감함이 과함이 됨",
-          white: "안정 지향 + 루틴 강함 + 큰 실수는 적지만 재미도 절약함",
-          gray: "타협의 달인 + 현실 감각 좋음 + 한 끗 차이로 더 좋아질 타입",
-        };
-        return map[type] || "선택 요약 생성 실패";
-      }
-
-      function makeTip(type) {
-        // 다이어트 강요 X, 생활 팁 느낌
-        const tips = {
-          black: [
-            "‘한 번만 더’가 나오면, 물 한 컵 먼저. (불 끄기 전에 환기)",
-            "결정이 빨라서 멋진데, 체크포인트 하나만 추가해요: ‘지금도 필요해?’",
-          ],
-          white: [
-            "완벽 루틴에 ‘작은 재미’를 넣어야 오래 갑니다. (소스 한 방울)",
-            "좋은 선택을 계속하려면, 쉬운 보상도 같이 주는 게 이깁니다.",
-          ],
-          gray: [
-            "타협은 능력. 다만 ‘핵심 한 가지’만은 고정하면 급상승합니다.",
-            "적당함을 유지하되, 주 1회만 ‘의식적인 선택’을 해보세요.",
-          ],
-        };
-        return pick(tips[type] || ["오늘도 무난하게 합격입니다."]);
-      }
-
-      function makeNextCourse(type) {
-        // BMI/식단으로 자연스럽게 연결하는 문장(링크는 결과 영역에서 제공)
-        const next = {
-          black: "이 타입은 ‘숫자 확인’이 은근히 도움 됩니다. (딱 한 번만)",
-          white: "유지형이라 ‘현 상태 점검’이 잘 맞아요. (가볍게)",
-          gray: "방향만 잡으면 됩니다. ‘나한테 맞는 식사 스타일’ 쪽이 잘 맞을 듯",
-        };
-        return next[type] || "다음 코스 추천 생성 실패";
       }
 
       /***********************
@@ -1134,9 +1563,9 @@ chef.funnyfunny.cloud`;
         const text = document.getElementById("copyText").textContent;
         try {
           await navigator.clipboard.writeText(text);
-          alert("복사 완료! (이제 캡처 없이도 공유 가능)");
+          alert(t("copySuccess"));
         } catch {
-          alert("복사 실패. 브라우저 권한을 확인해 주세요.");
+          alert(t("copyFail"));
         }
       });
 
